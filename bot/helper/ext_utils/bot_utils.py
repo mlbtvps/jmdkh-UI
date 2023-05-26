@@ -158,7 +158,7 @@ def get_readable_message():
         msg += f"\n<b>➲ Source</b>: {download.extra_details['source']}"
         msg += f"\n<b>➲ Elapsed</b>: {get_readable_time(time() - download.extra_details['startTime'])}"
         msg += f"\n<b>➲ Engine</b>: {download.engine}"
-        msg += f"\n<b>➲ Upload</b>: {download.extra_details['mode']}"
+        #msg += f"\n<b>➲ Upload</b>: {download.extra_details['mode']}"
         msg += f"\n<b>➲ Stop</b>: <code>/{BotCommands.CancelMirror} {download.gid()}</code>\n\n"
     if len(msg) == 0:
         return None, None
