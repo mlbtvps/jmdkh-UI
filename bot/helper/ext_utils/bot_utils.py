@@ -136,7 +136,7 @@ def get_readable_message():
         globals()['STATUS_START'] = STATUS_LIMIT * (PAGES - 1)
         globals()['PAGE_NO'] = PAGES
     for download in list(download_dict.values())[STATUS_START:STATUS_LIMIT+STATUS_START]:
-        msg += f"<b>《 <a href='https://t.me/etnntx7xacm'> Powered By うなぎてりやき</a> 》</b>\n\n"
+        msg += f"<b> __<a href='https://t.me/etnntx7xacm'> Powered By うなぎてりやき</a>__ </b>\n\n"
         msg += f"<b>➲ {download.status()}</b>: <code>{escape(f'{download.name()}')}</code>"
         if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING]:
             msg += f"\n<b>➲</b> <a href='https://t.me/etnntx7xacm>{get_progress_bar_string(download.progress())}</a> {download.progress()}"
@@ -158,7 +158,7 @@ def get_readable_message():
         msg += f"\n<b>➲ Source</b>: {download.extra_details['source']}"
         msg += f"\n<b>➲ Elapsed</b>: {get_readable_time(time() - download.extra_details['startTime'])}"
         msg += f"\n<b>➲ Engine</b>: {download.engine}"
-        #msg += f"\n<b>➲ Upload</b>: {download.extra_details['mode']}"
+        msg += f"\n<b>➲ Upload</b>: {download.extra_details['mode']}"
         msg += f"\n<b>➲ Stop</b>: <code>/{BotCommands.CancelMirror} {download.gid()}</code>\n\n"
     if len(msg) == 0:
         return None, None
@@ -190,7 +190,7 @@ def get_readable_message():
         buttons.ibutton(f"{PAGE_NO}/{PAGES} ({tasks})", "status ref")
         buttons.ibutton(">>", "status nex")
         button = buttons.build_menu(3)
-    msg += f"<b>《<a href='https://t.me/etnntx7xacm'>うなぎてりやき</a>》</b>\n<b>CPU</b>: {cpu_percent()}% | <b>FREE</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}"
+    msg += f"<b>__<a href='https://t.me/etnntx7xacm'>うなぎてりやき</a>__</b>\n<b>CPU</b>: {cpu_percent()}% | <b>FREE</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}"
     msg += f"\n<b>RAM</b>: {virtual_memory().percent}% | <b>UPTIME</b>: {get_readable_time(time() - botStartTime)}"
     msg += f"\n<b>DL</b>: {get_readable_file_size(dl_speed)}/s | <b>UL</b>: {get_readable_file_size(up_speed)}/s"
     return msg, button
